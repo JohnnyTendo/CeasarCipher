@@ -3,10 +3,16 @@
 #include <string.h>
 #include <iostream>
 #include <fstream>
+#include <gtk/gtk.h>
+
 
 #define KEY 2
 #define PLAIN "A CDEFGHIZA"
 
+GTKWidget* window;
+GTKWidget* button;
+//more on:
+//https://www.codeguru.com/cpp/cpp/creating-a-cc-gui-with-gtk.html
 /*
 int main()
 {
@@ -16,6 +22,9 @@ int main()
 
 int main(int argc, char* argv[])
 {
+    
+    gtk_init(&argc, &argv);
+    
     if (argc < 5)
     {
         printf("At least 4 arguments are required: direction (-c/-d), algorithm (-capitolLatin/-allLatin/-file), numeric key and text or filepath\r\n");
