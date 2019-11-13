@@ -7,20 +7,86 @@
 #define KEY 2
 #define PLAIN "A CDEFGHIZA"
 
+/*
 int main()
 {
-    char plain[100] = PLAIN;
-    UserInterface(plain);
-    /*
-    printf("Plain:     ");
-    PrintArray(plain);
-    char* encrypted = CipherLetters(plain, KEY);
-    printf("Encrypted: ");
-    PrintArray(encrypted);
-    char* decrypted = DecipherLetters(encrypted, KEY);
-    printf("Decrypted: ");
-    PrintArray(decrypted);
-    */
+*/
+    
+//EXP BEGIN
+
+int main(int argc, char* argv[])
+{
+    if (argc < 5)
+    {
+        printf("At least 4 arguments are required: direction (-c/-d), algorithm (-capitolLatin/-allLatin/-file), numeric key and text or filepath\r\n");
+        return 1;
+    }
+    if (argv[1] != "-c" || argv[1] != "-d")
+    {
+        printf("Incorrect direction. Enter '-c' to cipher or '-d' to decipher.\r\n");
+        return 1;
+    }
+    if (argv[2] != "-capitolLatin" || argv[2] != "-allLatin" || argv[2] != "-file")
+    {
+        printf("Incorrect algorithm. Enter '-capitolLatin', '-allLatin' or '-file'.\r\n");
+        return 1;
+    }
+    if (argv[3])
+    {
+        printf("Key needs to be a number.\r\n");
+        return 1;
+    }
+    
+    char plain[100] = argv[4];
+    
+    switch (argv[2])
+    {
+    case "-capitolLatin":
+        if (argv[1] == "-c")
+        {
+            char* encrypted = CipherCapitols(plain, argv[3]);
+            PrintArray(encrypted);
+        }
+        else if (argv[1] == "-d")
+        {
+            char* decrypted = DecipherCapitols(plain, argv[3]);
+            PrintArray(decrypted);
+        }
+        break;
+
+    case "-allLatin":
+        if (argv[1] == "-c")
+        {
+            char* encrypted = CipherLetters(plain, argv[3]);
+            PrintArray(encrypted);
+        }
+        else if (argv[1] == "-d")
+        {
+            char* decrypted = DecipherLetters(plain, argv[3]);
+            PrintArray(decrypted);
+        }
+        break;
+
+    case "-file":
+        if (argv[1] == "-c")
+        {
+            CipherFile(plain, argv[3]);
+        }
+        else if (argv[1] == "-d")
+        {
+            DecipherFile(plain, argv[3]);
+        }
+        break;
+    
+    default:
+        printf("Invalid Cipher Index\r\n");
+        break;
+    }
+    
+    
+//EXP END
+    //char plain[100] = PLAIN;
+    //UserInterface(plain);
     return 0;
 }
 
