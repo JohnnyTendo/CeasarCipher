@@ -7,8 +7,8 @@ char* CipherLetters(char* plain, int key);
 char* DecipherLetters(char* encrypted, int key);
 
 //FileCipher
-void CipherFile(char* fileName, int key);
-void DecipherFile(char* fileName, int key);
+void CipherFile(int algorithm, char* fileName, int key);
+void DecipherFile(int algorithm, char* fileName, int key);
 
 //Helper
 void PrintArray(char* _input);

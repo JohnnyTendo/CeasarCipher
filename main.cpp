@@ -4,89 +4,10 @@
 #include <iostream>
 #include <fstream>
 
-#define KEY 2
-#define PLAIN "A CDEFGHIZA"
-
-/*
 int main()
 {
-*/
-    
-//EXP BEGIN
-
-int main(int argc, char* argv[])
-{
-    if (argc < 5)
-    {
-        printf("At least 4 arguments are required: direction (-c/-d), algorithm (-capitolLatin/-allLatin/-file), numeric key and text or filepath\r\n");
-        return 1;
-    }
-    if (argv[1] != "-c" || argv[1] != "-d")
-    {
-        printf("Incorrect direction. Enter '-c' to cipher or '-d' to decipher.\r\n");
-        return 1;
-    }
-    if (argv[2] != "-capitolLatin" || argv[2] != "-allLatin" || argv[2] != "-file")
-    {
-        printf("Incorrect algorithm. Enter '-capitolLatin', '-allLatin' or '-file'.\r\n");
-        return 1;
-    }
-    if (argv[3])
-    {
-        printf("Key needs to be a number.\r\n");
-        return 1;
-    }
-    
-    char plain[100] = argv[4];
-    
-    switch (argv[2])
-    {
-    case "-capitolLatin":
-        if (argv[1] == "-c")
-        {
-            char* encrypted = CipherCapitols(plain, argv[3]);
-            PrintArray(encrypted);
-        }
-        else if (argv[1] == "-d")
-        {
-            char* decrypted = DecipherCapitols(plain, argv[3]);
-            PrintArray(decrypted);
-        }
-        break;
-
-    case "-allLatin":
-        if (argv[1] == "-c")
-        {
-            char* encrypted = CipherLetters(plain, argv[3]);
-            PrintArray(encrypted);
-        }
-        else if (argv[1] == "-d")
-        {
-            char* decrypted = DecipherLetters(plain, argv[3]);
-            PrintArray(decrypted);
-        }
-        break;
-
-    case "-file":
-        if (argv[1] == "-c")
-        {
-            CipherFile(plain, argv[3]);
-        }
-        else if (argv[1] == "-d")
-        {
-            DecipherFile(plain, argv[3]);
-        }
-        break;
-    
-    default:
-        printf("Invalid Cipher Index\r\n");
-        break;
-    }
-    
-    
-//EXP END
-    //char plain[100] = PLAIN;
-    //UserInterface(plain);
+    char plain[100];
+    UserInterface(plain);
     return 0;
 }
 
@@ -96,65 +17,117 @@ void UserInterface(char* _input)
     int cipherIdx;
     int key;
     char direction;
-    printf("Select Cipher: \r\n");
-    printf("1 - CAPITOL LETTERS\r\n");
-    printf("2 -   all letters  \r\n");
-    printf("3 -      File      \r\n");
+    char kind;
+    printf("File or text (f/t): \r\n");
+    scanf(" %c", &kind);
     printf("___________________\r\n");
-    printf("Insert Index: ");
-    scanf("%d", &cipherIdx);
-    printf("___________________\r\n");
-    printf("Cipher or decipher (c/d): ");
-    scanf(" %c", &direction);
-    printf("___________________\r\n");
-    printf("Insert Key: ");
-    scanf("%d", &key);
-    printf("___________________\r\n");
-    printf("Input Text/Filename: ");
-    scanf("%s", _input);
-    
-    switch (cipherIdx)
+    if (kind == 'f')
     {
-    case 1:
-        if (direction == 'c')
+        printf("Select Cipher: \r\n");
+        printf("1 - CAPITOL LETTERS\r\n");
+        printf("2 -   all letters  \r\n");
+        printf("___________________\r\n");
+        printf("Insert Index: ");
+        scanf("%d", &cipherIdx);
+        printf("___________________\r\n");
+        if (cipherIdx == 1 || cipherIdx == 2)
         {
-            char* encrypted = CipherCapitols(_input, key);
-            PrintArray(encrypted);
+            printf("Insert Key: ");
+            scanf("%d", &key);
+            printf("___________________\r\n");
+            printf("Cipher or decipher (c/d): ");
+            scanf(" %c", &direction);
+            printf("___________________\r\n");
+            if (direction == 'c')
+            {
+                printf("Input Filename: ");
+                scanf("%s", _input);
+                CipherFile(cipherIdx, _input, key);
+            }
+            else if (direction == 'd')
+            {
+                printf("Input Filename: ");
+                scanf("%s", _input);
+                DecipherFile(cipherIdx, _input, key);
+            }
+            else
+            {
+                return;
+            }  
         }
-        else if (direction == 'd')
+        else
         {
-            char* decrypted = DecipherCapitols(_input, key);
-            PrintArray(decrypted);
-        }
-        break;
-
-    case 2:
-        if (direction == 'c')
+            return;
+        } 
+    }
+    else if (kind == 't')
+    {
+        printf("Select Cipher: \r\n");
+        printf("1 - CAPITOL LETTERS\r\n");
+        printf("2 -   all letters  \r\n");
+        printf("___________________\r\n");
+        printf("Insert Index: ");
+        scanf("%d", &cipherIdx);
+        printf("___________________\r\n");
+        if (cipherIdx == 1)
         {
-            char* encrypted = CipherLetters(_input, key);
-            PrintArray(encrypted);
+            printf("Insert Key: ");
+            scanf("%d", &key);
+            printf("___________________\r\n");
+            printf("Cipher or decipher (c/d): ");
+            scanf(" %c", &direction);
+            printf("___________________\r\n");
+            if (direction == 'c')
+            {
+                printf("Input Text: ");
+                scanf("%s", _input);
+                PrintArray(CipherCapitols(_input, key));
+            }
+            else if (direction == 'd')
+            {
+                printf("Input Text: ");
+                scanf("%s", _input);
+                PrintArray(DecipherCapitols(_input, key));
+            }
+            else
+            {
+                return;
+            }  
         }
-        else if (direction == 'd')
+        else if (cipherIdx == 2)
         {
-            char* decrypted = DecipherLetters(_input, key);
-            PrintArray(decrypted);
+            printf("Insert Key: ");
+            scanf("%d", &key);
+            printf("___________________\r\n");
+            printf("Cipher or decipher (c/d): ");
+            scanf(" %c", &direction);
+            printf("___________________\r\n");
+            if (direction == 'c')
+            {
+                printf("Input Text: ");
+                scanf("%s", _input);
+                PrintArray(CipherLetters(_input, key));
+            }
+            else if (direction == 'd')
+            {
+                printf("Input Text: ");
+                scanf("%s", _input);
+                PrintArray(DecipherLetters(_input, key));
+            }
+            else
+            {
+                return;
+            }  
         }
-        break;
-
-    case 3:
-        if (direction == 'c')
+        
+        else
         {
-            CipherFile(_input, key);
-        }
-        else if (direction == 'd')
-        {
-            DecipherFile(_input, key);
-        }
-        break;
-    
-    default:
-        printf("Invalid Cipher Index\r\n");
-        break;
+            return;
+        } 
+    }
+    else
+    {
+        printf("No valid output type.\r\n");
     }
 }
 
@@ -252,7 +225,7 @@ char* DecipherLetters(char* encrypted, int key)
     return encrypted;
 }
 
-void CipherFile(char* fileName, int key)
+void CipherFile(int algorithm, char* fileName, int key)
 {
     std::ifstream iFile;
     std::ofstream oFile;
@@ -260,11 +233,13 @@ void CipherFile(char* fileName, int key)
     iFile.seekg (0,iFile.end);
     long size = iFile.tellg();
     iFile.seekg (0);
-
     char* buffer = new char[size];
     iFile.read(buffer, size);
     iFile.close();
-    CipherLetters(buffer, key);
+    if (algorithm == 1)
+        CipherCapitols(buffer, key);
+    else if (algorithm == 2)
+        CipherLetters(buffer, key);
     oFile.open(fileName, std::ios::out);
     oFile.write(buffer, size);
     delete[] buffer;
@@ -272,7 +247,7 @@ void CipherFile(char* fileName, int key)
     printf("Ciphered file %s successfully.\r\n", fileName);
 }
 
-void DecipherFile(char* fileName, int key)
+void DecipherFile(int algorithm, char* fileName, int key)
 {
     std::ifstream iFile;
     std::ofstream oFile;
@@ -283,7 +258,10 @@ void DecipherFile(char* fileName, int key)
     char* buffer = new char[size];
     iFile.read(buffer, size);
     iFile.close();
-    DecipherLetters(buffer, key);
+    if (algorithm == 1)
+        DecipherCapitols(buffer, key);
+    else if (algorithm == 2)
+        DecipherLetters(buffer, key);
     oFile.open(fileName, std::ios::out);
     oFile.write(buffer, size);
     delete[] buffer;
