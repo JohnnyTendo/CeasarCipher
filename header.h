@@ -1,20 +1,20 @@
 //CapitolCipher
-char* CipherCapitols(char* plain, int key);
-char* DecipherCapitols(char* encrypted, int key);
+char* cipherCapitols(char* plain, int key);
+char* decipherCapitols(char* encrypted, int key);
 
 //LetterCipher
-char* CipherLetters(char* plain, int key);
-char* DecipherLetters(char* encrypted, int key);
+char* cipherLetters(char* plain, int key);
+char* decipherLetters(char* encrypted, int key);
 
 //AllCipher
-char* CipherAll(char* plain, int key);
-char* DecipherAll(char* plain, int key);
+char* cipherAll(char* plain, int key);
+char* decipherAll(char* plain, int key);
 
 //FileCipher
-void CipherFile(int algorithm, char* fileName, int key);
-void DecipherFile(int algorithm, char* fileName, int key);
+void cipherFile(int algorithm, char* fileName, int key);
+void decipherFile(int algorithm, char* fileName, int key);
 
 //Helper
-void PrintArray(char* _input);
-void UserInterface(char* _input);
-int GenerateKey(char* _key);
+void printArray(char* _input);
+void userInterface(char* _input);
+int generateKey(char* _key);
