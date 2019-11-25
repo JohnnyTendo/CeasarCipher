@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void PrintArray(char* _input)
+void printArray(char* _input)
 {
     unsigned int n = strlen(_input);
     for (int i = 0; i < n; i++)
@@ -11,7 +11,7 @@ void PrintArray(char* _input)
     printf("\r\n");
 }
 
-int GenerateKey(char* _key)
+int generateKey(char* _key)
 {
   long key = 1;
   unsigned int n = strlen(_key);
