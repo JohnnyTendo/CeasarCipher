@@ -7,7 +7,7 @@
 int main()
 {
     char plain[100];
-    UserInterface(plain);
+    userInterface(plain);
     return 0;
 }
 
