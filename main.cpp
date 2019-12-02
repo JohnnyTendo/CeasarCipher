@@ -239,14 +239,7 @@ char* decipherAll(char* plain, int key)
   unsigned int n = strlen(plain);
   for (int i = 0; i < n; i++)
   {
-    if((plain[i] - key) < 0)
-    {
-      plain[i] += 255 -key;
-    }
-    else
-    {
-      plain[i] -= key;
-    }
+    plain[i] -= key;
   }
   return plain;
 }
