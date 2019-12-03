@@ -11,7 +11,7 @@ int main()
     return 0;
 }
 
-
+//Works perfectly
 void userInterface(char* _input)
 {
     int cipherIdx;
@@ -158,6 +158,7 @@ void userInterface(char* _input)
     }
 }
 
+//Works perfectly
 char* cipherCapitols(char* plain, int key)
 {
     key %= 26;
@@ -176,6 +177,7 @@ char* cipherCapitols(char* plain, int key)
     return plain;
 }
 
+//Works perfectly
 char* decipherCapitols(char* encrypted, int key)
 {
     key %= 26;
@@ -194,6 +196,7 @@ char* decipherCapitols(char* encrypted, int key)
     return encrypted;
 }
 
+//Unexpected behaviour
 char* cipherLetters(char* plain, int key)
 {
     key %= 52;
@@ -224,26 +227,37 @@ char* cipherLetters(char* plain, int key)
     return plain;
 }
 
+//Should work now 031219
 char* cipherAll(char* plain, int key)
 {
   unsigned int n = strlen(plain);
   for (int i = 0; i < n; i++)
   {
-    plain[i] += key;
+    long _value = plain[i];
+    if((_value + key)>255)
+        plain[i] += (key - 255);
+    else
+        plain[i] += key;
   }
   return plain;
 }
 
+//Should work now 031219
 char* decipherAll(char* plain, int key)
 {
   unsigned int n = strlen(plain);
   for (int i = 0; i < n; i++)
   {
-    plain[i] -= key;
+    long _value = plain[i];
+    if((_value - key) < 0)
+        plain[i] += (-key + 255);
+    else
+        plain[i] -= key;
   }
   return plain;
 }
 
+//Unexpected behaviour
 char* decipherLetters(char* encrypted, int key)
 {
     key %= 52;
@@ -268,6 +282,7 @@ char* decipherLetters(char* encrypted, int key)
     return encrypted;
 }
 
+//Works perfectly
 void cipherFile(int algorithm, char* fileName, int key)
 {
     std::ifstream iFile;
@@ -292,6 +307,7 @@ void cipherFile(int algorithm, char* fileName, int key)
     printf("Ciphered file %s successfully.\r\n", fileName);
 }
 
+//Works perfectly
 void decipherFile(int algorithm, char* fileName, int key)
 {
     std::ifstream iFile;
