@@ -25,3 +25,9 @@ void selectDirection(char* _direction)
     scanf(" %c", &_direction);
     printf("___________________\r\n");
 }
+
+void selectText(char* _input)
+{
+    printf("Input text or filename: ");
+    scanf("%s", _input);
+}
