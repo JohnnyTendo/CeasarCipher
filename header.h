@@ -18,3 +18,8 @@ void decipherFile(int algorithm, char* fileName, int key);
 void printArray(char* _input);
 void userInterface(char* _input);
 int generateKey(char* _key);
+
+//InterfaceHelper
+void selectCipher(char* _cipherIdx);
+void selectKey(char* _key);
+void selectDirection(char* _direction);
