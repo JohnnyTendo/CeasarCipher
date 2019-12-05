@@ -23,32 +23,19 @@ void userInterface(char* _input)
     printf("___________________\r\n");
     if (kind == 'f')
     {
-        printf("Select Cipher: \r\n");
-        printf("1 - CAPITOL LETTERS\r\n");
-        printf("2 -   all letters  \r\n");
-        printf("3 -    all chars   \r\n");
-        printf("___________________\r\n");
-        printf("Insert Index: ");
-        scanf("%d", &cipherIdx);
-        printf("___________________\r\n");
+        selectCipher(cipherIdx);
         if (cipherIdx == 1 || cipherIdx == 2 || cipherIdx == 3)
         {
-            printf("Insert Key: ");
-            scanf("%s", key);
-            printf("___________________\r\n");
-            printf("Cipher or decipher (c/d): ");
-            scanf(" %c", &direction);
-            printf("___________________\r\n");
+            selectKey(key);
+            selectDirection(direction);
             if (direction == 'c')
             {
-                printf("Input Filename: ");
-                scanf("%s", _input);
+                selectText(_input);
                 cipherFile(cipherIdx, _input, generateKey(key));
             }
             else if (direction == 'd')
             {
-                printf("Input Filename: ");
-                scanf("%s", _input);
+                selectText(_input);
                 decipherFile(cipherIdx, _input, generateKey(key));
             }
             else
@@ -63,32 +50,19 @@ void userInterface(char* _input)
     }
     else if (kind == 't')
     {
-        printf("Select Cipher: \r\n");
-        printf("1 - CAPITOL LETTERS\r\n");
-        printf("2 -   all letters  \r\n");
-        printf("3 -    all chars   \r\n");
-        printf("___________________\r\n");
-        printf("Insert Index: ");
-        scanf("%d", &cipherIdx);
-        printf("___________________\r\n");
+        selectCipher(cipherIdx);
         if (cipherIdx == 1)
         {
-            printf("Insert Key: ");
-            scanf("%s", key);
-            printf("___________________\r\n");
-            printf("Cipher or decipher (c/d): ");
-            scanf(" %c", &direction);
-            printf("___________________\r\n");
+            selectKey(key);
+            selectDirection(direction);
             if (direction == 'c')
             {
-                printf("Input Text: ");
-                scanf("%s", _input);
+                selectText(_input);
                 printArray(cipherCapitols(_input, generateKey(key)));
             }
             else if (direction == 'd')
             {
-                printf("Input Text: ");
-                scanf("%s", _input);
+                selectText(_input);
                 printArray(decipherCapitols(_input, generateKey(key)));
             }
             else
@@ -98,22 +72,16 @@ void userInterface(char* _input)
         }
         else if (cipherIdx == 2)
         {
-            printf("Insert Key: ");
-            scanf("%s", key);
-            printf("___________________\r\n");
-            printf("Cipher or decipher (c/d): ");
-            scanf(" %c", &direction);
-            printf("___________________\r\n");
+            selectKey(key);
+            selectDirection(direction);
             if (direction == 'c')
             {
-                printf("Input Text: ");
-                scanf("%s", _input);
+                selectText(_input);
                 printArray(cipherLetters(_input, generateKey(key)));
             }
             else if (direction == 'd')
             {
-                printf("Input Text: ");
-                scanf("%s", _input);
+                selectText(_input);
                 printArray(decipherLetters(_input, generateKey(key)));
             }
             else
@@ -123,22 +91,16 @@ void userInterface(char* _input)
         }
         else if (cipherIdx == 3)
         {
-            printf("Insert Key: ");
-            scanf("%s", key);
-            printf("___________________\r\n");
-            printf("Cipher or decipher (c/d): ");
-            scanf(" %c", &direction);
-            printf("___________________\r\n");
+            selectKey(key);
+            selectDirection(direction);
             if (direction == 'c')
             {
-                printf("Input Text: ");
-                scanf("%s", _input);
+                selectText(_input);
                 printArray(cipherAll(_input, generateKey(key)));
             }
             else if (direction == 'd')
             {
-                printf("Input Text: ");
-                scanf("%s", _input);
+                selectText(_input);
                 printArray(decipherAll(_input, generateKey(key)));
             }
             else
