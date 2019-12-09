@@ -1,3 +1,5 @@
+//no returntypes for functions with pointer as parameter (refactor)
+
 //CapitolCipher
 char* cipherCapitols(char* plain, int key);
 char* decipherCapitols(char* encrypted, int key);
