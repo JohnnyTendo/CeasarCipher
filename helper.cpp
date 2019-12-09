@@ -11,7 +11,7 @@ void printArray(char* _input)
     printf("\r\n");
 }
 
-int generateKey(char* _key)
+void generateKey(char* _key)
 {
   long key = 1;
   unsigned int n = strlen(_key);
