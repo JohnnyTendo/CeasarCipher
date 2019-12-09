@@ -248,6 +248,7 @@ char* decipherLetters(char* encrypted, int key)
 void cipherFile(int algorithm, char* fileName, int key)
 {
     //filestream ist cpp nicht c -> weg in reinem c suchen (structs hatten wir aber noch nicht)
+    //ggf structs mit erklären
     std::ifstream iFile;
     std::ofstream oFile;
     iFile.open(fileName, std::ios::in);
