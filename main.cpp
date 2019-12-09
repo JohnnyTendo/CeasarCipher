@@ -4,6 +4,8 @@
 #include <iostream>
 #include <fstream>
 
+//dynamische speichernutzung mit "new"-Keyword
+
 int main()
 {
     char plain[100];
@@ -58,6 +60,7 @@ void userInterface(char* _input)
             if (direction == 'c')
             {
                 selectText(_input);
+                //ref header.h for refactor
                 printArray(cipherCapitols(_input, generateKey(key)));
             }
             else if (direction == 'd')
