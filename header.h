@@ -26,3 +26,6 @@ void selectCipher(char* _cipherIdx);
 void selectKey(char* _key);
 void selectDirection(char* _direction);
 void selectText(char* _input);
+
+//Structures
+void initializeStructures(void);
