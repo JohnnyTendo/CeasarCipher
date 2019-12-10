@@ -8,6 +8,9 @@
 
 int main()
 {
+    initializeStructures();
+    //struct is highly experimental i should rather use one to store all the data needed for the en-/decryption
+    struct dataSet activeSet;
     char plain[100];
     userInterface(plain);
     return 0;
