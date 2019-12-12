@@ -1,16 +1,14 @@
-//no returntypes for functions with pointer as parameter (refactor)
-
 //CapitolCipher
-char* cipherCapitols(char* plain, int key);
-char* decipherCapitols(char* encrypted, int key);
+void cipherCapitols(char* plain, int key);
+void decipherCapitols(char* encrypted, int key);
 
 //LetterCipher
-char* cipherLetters(char* plain, int key);
-char* decipherLetters(char* encrypted, int key);
+void cipherLetters(char* plain, int key);
+void decipherLetters(char* encrypted, int key);
 
 //AllCipher
-char* cipherAll(char* plain, int key);
-char* decipherAll(char* plain, int key);
+void cipherAll(char* plain, int key);
+void* decipherAll(char* plain, int key);
 
 //FileCipher
 void cipherFile(int algorithm, char* fileName, int key);
