@@ -127,7 +127,7 @@ void userInterface(char* _input)
 }
 
 //Works perfectly
-char* cipherCapitols(char* plain, int key)
+void cipherCapitols(char* plain, int key)
 {
     key %= 26;
     unsigned int n = strlen(plain);
@@ -146,7 +146,7 @@ char* cipherCapitols(char* plain, int key)
 }
 
 //Works perfectly
-char* decipherCapitols(char* encrypted, int key)
+void decipherCapitols(char* encrypted, int key)
 {
     key %= 26;
     unsigned int n = strlen(encrypted);
@@ -165,7 +165,7 @@ char* decipherCapitols(char* encrypted, int key)
 }
 
 //Unexpected behaviour
-char* cipherLetters(char* plain, int key)
+void cipherLetters(char* plain, int key)
 {
     key %= 52;
     unsigned int n = strlen(plain);
@@ -196,37 +196,35 @@ char* cipherLetters(char* plain, int key)
 }
 
 //Should work now 031219
-char* cipherAll(char* plain, int key)
+void cipherAll(char* plain, int key)
 {
   unsigned int n = strlen(plain);
   for (int i = 0; i < n; i++)
   {
-    long _value = plain[i];
+    int _value = plain[i];
     if((_value + key)>255)
         plain[i] += (key - 255);
     else
         plain[i] += key;
   }
-  return plain;
 }
 
 //Should work now 031219
-char* decipherAll(char* plain, int key)
+void decipherAll(char* plain, int key)
 {
   unsigned int n = strlen(plain);
   for (int i = 0; i < n; i++)
   {
     long _value = plain[i];
     if((_value - key) < 0)
-        plain[i] += (-key + 255);
+        plain[i] -= (key + 255);
     else
         plain[i] -= key;
   }
-  return plain;
 }
 
 //Unexpected behaviour
-char* decipherLetters(char* encrypted, int key)
+void decipherLetters(char* encrypted, int key)
 {
     key %= 52;
     unsigned int n = strlen(encrypted);
@@ -247,7 +245,6 @@ char* decipherLetters(char* encrypted, int key)
             encrypted[i] = _value;
         }
     }
-    return encrypted;
 }
 
 //Works perfectly
