@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "header.h"
+//string.h could be left out, but i would have to pass the size of the actual array before it turns into a pointer.
+//a pointer would always have the size 8 if calculated with sizeof(*array)/sizeof(arrayDataType)
 #include <string.h>
 #include <iostream>
 #include <fstream>
@@ -16,117 +18,7 @@ int main()
     return 0;
 }
 
-//Works perfectly
-void userInterface(char* _input)
-{
-    int cipherIdx;
-    char key[100];
-    char direction;
-    char kind;
-    printf("File or text (f/t): \r\n");
-    scanf(" %c", &kind);
-    printf("___________________\r\n");
-    if (kind == 'f')
-    {
-        selectCipher(cipherIdx);
-        if (cipherIdx == 1 || cipherIdx == 2 || cipherIdx == 3)
-        {
-            selectKey(key);
-            selectDirection(direction);
-            if (direction == 'c')
-            {
-                selectText(_input);
-                cipherFile(cipherIdx, _input, generateKey(key));
-            }
-            else if (direction == 'd')
-            {
-                selectText(_input);
-                decipherFile(cipherIdx, _input, generateKey(key));
-            }
-            else
-            {
-                return;
-            }
-        }
-        else
-        {
-            return;
-        }
-    }
-    else if (kind == 't')
-    {
-        selectCipher(cipherIdx);
-        if (cipherIdx == 1)
-        {
-            selectKey(key);
-            selectDirection(direction);
-            if (direction == 'c')
-            {
-                selectText(_input);
-                //ref header.h for refactor
-                printArray(cipherCapitols(_input, generateKey(key)));
-            }
-            else if (direction == 'd')
-            {
-                selectText(_input);
-                printArray(decipherCapitols(_input, generateKey(key)));
-            }
-            else
-            {
-                return;
-            }
-        }
-        else if (cipherIdx == 2)
-        {
-            selectKey(key);
-            selectDirection(direction);
-            if (direction == 'c')
-            {
-                selectText(_input);
-                printArray(cipherLetters(_input, generateKey(key)));
-            }
-            else if (direction == 'd')
-            {
-                selectText(_input);
-                printArray(decipherLetters(_input, generateKey(key)));
-            }
-            else
-            {
-                return;
-            }
-        }
-        else if (cipherIdx == 3)
-        {
-            selectKey(key);
-            selectDirection(direction);
-            if (direction == 'c')
-            {
-                selectText(_input);
-                printArray(cipherAll(_input, generateKey(key)));
-            }
-            else if (direction == 'd')
-            {
-                selectText(_input);
-                printArray(decipherAll(_input, generateKey(key)));
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        else
-        {
-            return;
-        }
-    }
-    else
-    {
-        printf("No valid output type.\r\n");
-    }
-}
-
-//Works perfectly
+//Works
 void cipherCapitols(char* plain, int key)
 {
     key %= 26;
@@ -142,10 +34,9 @@ void cipherCapitols(char* plain, int key)
             }
         }
     }
-    return plain;
 }
 
-//Works perfectly
+//Works
 void decipherCapitols(char* encrypted, int key)
 {
     key %= 26;
@@ -161,10 +52,9 @@ void decipherCapitols(char* encrypted, int key)
             }
         }
     }
-    return encrypted;
 }
 
-//Unexpected behaviour
+//
 void cipherLetters(char* plain, int key)
 {
     key %= 52;
@@ -195,7 +85,7 @@ void cipherLetters(char* plain, int key)
     return plain;
 }
 
-//Should work now 031219
+//works
 void cipherAll(char* plain, int key)
 {
   unsigned int n = strlen(plain);
@@ -209,7 +99,7 @@ void cipherAll(char* plain, int key)
   }
 }
 
-//Should work now 031219
+//works
 void decipherAll(char* plain, int key)
 {
   unsigned int n = strlen(plain);
@@ -223,7 +113,7 @@ void decipherAll(char* plain, int key)
   }
 }
 
-//Unexpected behaviour
+//
 void decipherLetters(char* encrypted, int key)
 {
     key %= 52;
@@ -247,7 +137,7 @@ void decipherLetters(char* encrypted, int key)
     }
 }
 
-//Works perfectly
+//Works
 void cipherFile(int algorithm, char* fileName, int key)
 {
     //filestream ist cpp nicht c -> weg in reinem c suchen (structs hatten wir aber noch nicht)
@@ -274,7 +164,7 @@ void cipherFile(int algorithm, char* fileName, int key)
     printf("Ciphered file %s successfully.\r\n", fileName);
 }
 
-//Works perfectly
+//Works
 void decipherFile(int algorithm, char* fileName, int key)
 {
     std::ifstream iFile;
