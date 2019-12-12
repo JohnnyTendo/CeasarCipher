@@ -54,37 +54,6 @@ void decipherCapitols(char* encrypted, int key)
     }
 }
 
-//
-void cipherLetters(char* plain, int key)
-{
-    key %= 52;
-    unsigned int n = strlen(plain);
-    for (int i = 0; i < n; i++)
-    {
-        long _value = plain[i];
-        printf("%d -> ", _value);
-        if ((64 < _value && _value < 91) || (96 < _value && _value < 123))
-        {
-            _value += key;
-            printf("%d -> ", _value);
-            if (90 < _value && _value < 97)
-            {
-                _value += 6;
-            printf("%d a\r\n", _value);
-            }
-            if (122 < _value)
-            {
-                _value -= 59;
-            printf("%d b\r\n", _value);
-            }
-            printf(" end\r\n");
-            plain[i] = _value;
-        }
-
-    }
-    return plain;
-}
-
 //works
 void cipherAll(char* plain, int key)
 {
@@ -113,31 +82,47 @@ void decipherAll(char* plain, int key)
   }
 }
 
-//
+//works
+void cipherLetters(char* plain, int key)
+{
+    key %= 52;
+    unsigned int n = strlen(plain);
+    for (int i = 0; i < n; i++)
+    {
+        int _value = plain[i];
+        if ((64 < _value && _value < 91) || (96 < _value && _value < 123))
+        {
+            _value += key;
+            if (90 < _value && _value < 97)
+                _value += 6;
+            if (122 < _value)
+                _value -= 59;
+            plain[i] = _value;
+        }
+    }
+}
+
+//works
 void decipherLetters(char* encrypted, int key)
 {
     key %= 52;
     unsigned int n = strlen(encrypted);
     for (int i = 0; i < n; i++)
     {
-        long _value = encrypted[i];
+        int _value = encrypted[i];
         if ((64 < _value && _value < 91) || (96 < _value && _value < 123))
         {
             _value -= key;
-            if ((90 < _value && _value < 97) || (96 < (_value + key) && (_value - key) < 97))
-            {
+            if ((90 < _value && _value < 97) || (96 < (_value - key) && (_value - key) < 97))
                 _value -= 6;
-            }
             else if (_value < 65)
-            {
                 _value += 59;
-            }
             encrypted[i] = _value;
         }
     }
 }
 
-//Works
+//works
 void cipherFile(int algorithm, char* fileName, int key)
 {
     //filestream ist cpp nicht c -> weg in reinem c suchen (structs hatten wir aber noch nicht)
@@ -164,7 +149,7 @@ void cipherFile(int algorithm, char* fileName, int key)
     printf("Ciphered file %s successfully.\r\n", fileName);
 }
 
-//Works
+//works
 void decipherFile(int algorithm, char* fileName, int key)
 {
     std::ifstream iFile;
