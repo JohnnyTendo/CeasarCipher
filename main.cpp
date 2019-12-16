@@ -122,6 +122,8 @@ void decipherLetters(char* encrypted, int key)
     }
 }
 
+//use fprint() , fopen() etc to reference the struct FILE instead
+
 //works
 void cipherFile(int algorithm, char* fileName, int key)
 {
