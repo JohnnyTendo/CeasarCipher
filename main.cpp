@@ -175,3 +175,37 @@ void decipherFile(int algorithm, char* fileName, int key)
     oFile.close();
     printf("Deciphered file %s successfully.\r\n", fileName);
 }
+
+void cryptFile(int _cipherIdx, char* _input, int _key)
+{
+    _input = sprintf("%s.txt",_input);
+    FILE* file = fopen(_input, "r+");
+    long size = ftell(file);
+    char* buffer = new char[size];
+    fread(buffer, size, 1, file);
+    if (algorithm == 1)
+        cipherCapitols(buffer, key);
+    else if (algorithm == 2)
+        cipherLetters(buffer, key);
+    else if (algorithm == 3)
+        cipherAll(buffer, key);
+    fprintf(file, buffer);
+    fclose(file);
+}
+
+void decryptFile(int _cipherIdx, char* _input, int _key)
+{
+    _input = sprintf("%s.txt",_input);
+    FILE* file = fopen(_input, "r+");
+    long size = ftell(file);
+    char* buffer = new char[size];
+    fread(buffer, size, 1, file);
+    if (algorithm == 1)
+        decipherCapitols(buffer, key);
+    else if (algorithm == 2)
+        decipherLetters(buffer, key);
+    else if (algorithm == 3)
+        decipherAll(buffer, key);
+    fprintf(file, buffer);
+    fclose(file);
+}
