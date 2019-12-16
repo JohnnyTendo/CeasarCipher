@@ -14,5 +14,5 @@ void initializeStructures()
     int key;
     char direction;
     int cipherIndex;
-  }
+  };
 }
