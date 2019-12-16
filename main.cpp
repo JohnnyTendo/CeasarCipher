@@ -191,6 +191,8 @@ void cryptFile(int _cipherIdx, char* _input, int _key)
         cipherAll(buffer, key);
     fprintf(file, buffer);
     fclose(file);
+    delete[] buffer;
+    printf("Deciphered file %s successfully.\r\n", _input);
 }
 
 void decryptFile(int _cipherIdx, char* _input, int _key)
@@ -208,4 +210,6 @@ void decryptFile(int _cipherIdx, char* _input, int _key)
         decipherAll(buffer, key);
     fprintf(file, buffer);
     fclose(file);
+    delete[] buffer;
+    printf("Deciphered file %s successfully.\r\n", _input);
 }
