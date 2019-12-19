@@ -125,6 +125,7 @@ void selectKey(char* _key)
 {
     printf("Insert _key: ");
     scanf("%s", _key);
+    generateKey(_key);
     printf("___________________\r\n");
 }
 
