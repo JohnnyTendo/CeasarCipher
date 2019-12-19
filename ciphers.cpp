@@ -1,3 +1,6 @@
+#include <iostream>
+#include <fstream>
+
 #include <stdio.h>
 #include "header.h"
 #include <string.h>
