@@ -3,7 +3,7 @@
 void userInterface(char* _input)
 {
     int cipherIdx;
-    char key[100];
+    int key;
     char direction;
     char kind;
     printf("File or text (f/t): \r\n");
@@ -19,12 +19,12 @@ void userInterface(char* _input)
             if (direction == 'c')
             {
                 selectText(_input);
-                cipherFile(cipherIdx, _input, generateKey(key));
+                cipherFile(cipherIdx, _input, key);
             }
             else if (direction == 'd')
             {
                 selectText(_input);
-                decipherFile(cipherIdx, _input, generateKey(key));
+                decipherFile(cipherIdx, _input, key);
             }
             else
             {
@@ -46,13 +46,12 @@ void userInterface(char* _input)
             if (direction == 'c')
             {
                 selectText(_input);
-                //ref header.h for refactor
-                printArray(cipherCapitols(_input, generateKey(key)));
+                printArray(cipherCapitols(_input, key));
             }
             else if (direction == 'd')
             {
                 selectText(_input);
-                printArray(decipherCapitols(_input, generateKey(key)));
+                printArray(decipherCapitols(_input, key));
             }
             else
             {
@@ -66,12 +65,12 @@ void userInterface(char* _input)
             if (direction == 'c')
             {
                 selectText(_input);
-                printArray(cipherLetters(_input, generateKey(key)));
+                printArray(cipherLetters(_input, key));
             }
             else if (direction == 'd')
             {
                 selectText(_input);
-                printArray(decipherLetters(_input, generateKey(key)));
+                printArray(decipherLetters(_input, key));
             }
             else
             {
@@ -85,12 +84,12 @@ void userInterface(char* _input)
             if (direction == 'c')
             {
                 selectText(_input);
-                printArray(cipherAll(_input, generateKey(key)));
+                printArray(cipherAll(_input, key));
             }
             else if (direction == 'd')
             {
                 selectText(_input);
-                printArray(decipherAll(_input, generateKey(key)));
+                printArray(decipherAll(_input, key));
             }
             else
             {
@@ -121,11 +120,12 @@ void selectCipher(char* _cipherIdx)
     printf("___________________\r\n");
 }
 
-void selectKey(char* _key)
+void selectKey(int _key)
 {
+    char keyText[100];
     printf("Insert _key: ");
-    scanf("%s", _key);
-    generateKey(_key);
+    scanf("%s", keyText);
+    _key = generateKey(keyText);
     printf("___________________\r\n");
 }
 
