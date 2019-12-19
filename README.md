@@ -11,12 +11,11 @@
 Anforderungen an die Umsetzung der Sortierverfahren und Caesarverschlüsselungen in C++
 ======================================================================================
 
-Caesarverschlüsselung:
+###Caesarverschlüsselung:
   - Die zu erstellenden Funktionen sollen ebenfalls in einem eigenen cpp-Header-Datei-Paar notiert werden.
+  - ~Die Funktionen sollen char-Arrays ver- und entschlüsseln.~
   
-  - Die Funktionen sollen char-Arrays ver- und entschlüsseln.
-  
-  Folgende Funktionen sollen erstellt werden:
+###Folgende Funktionen sollen erstellt werden:
   - ~Funktionen zum Ver- und Entschlüsseln von ausschließlich Großbuchstaben (ein int-Schlüssel für alle Zeichen)~
   - ~Funktionen zum Ver- und Entschlüsseln von Groß- und Kleinbuchstaben (ein int-Schlüssel für alle Zeichen)~
   - ~Funktionen zum Ver- und Entschlüsseln von allen Zeichen (ein int-Schlüssel für alle Zeichen)~
