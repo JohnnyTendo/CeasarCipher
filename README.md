@@ -19,8 +19,8 @@ Anforderungen an die Umsetzung der Sortierverfahren und Caesarverschlüsselungen
   - ~Funktionen zum Ver- und Entschlüsseln von ausschließlich Großbuchstaben (ein int-Schlüssel für alle Zeichen)~
   - ~Funktionen zum Ver- und Entschlüsseln von Groß- und Kleinbuchstaben (ein int-Schlüssel für alle Zeichen)~
   - ~Funktionen zum Ver- und Entschlüsseln von allen Zeichen (ein int-Schlüssel für alle Zeichen)~
-  - Funktionen zum Ver- und Entschlüsseln von allen Zeichen (Schlüssel ist selbst ein Text im Null terminierten char-Array)
-  - Funktionen zum Ver- und Entschlüsseln von Dateiinhalten (Schlüssel ist ein Text im Null terminierten char-Array)
+  - ~Funktionen zum Ver- und Entschlüsseln von allen Zeichen (Schlüssel ist selbst ein Text im Null terminierten char-Array)~
+  - ~Funktionen zum Ver- und Entschlüsseln von Dateiinhalten (Schlüssel ist ein Text im Null terminierten char-Array)~
   - Funktionen zum Ver- und Entschlüsseln von Dateiinhalten (Schlüssel ist eine andere Datei)
   - Programm mit grafischer Oberfläche zum Testen der Funktionen sofern GUIs im Unterricht bereits besprochen sind.
 
