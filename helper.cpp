@@ -22,3 +22,18 @@ int generateKey(char* _key)
   }
     return key;
 }
+
+int fileAsKey(char* _filePath)
+{
+    int sum;
+    FILE* file = fopen( _filePath, "r" );
+    if (!file)
+    {
+        return 0;
+    }
+    for (int i = 0; i < file.length; i++)
+    {
+        sum += file[i];
+    }
+    return sum;
+}
