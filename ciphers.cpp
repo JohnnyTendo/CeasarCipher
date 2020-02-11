@@ -9,6 +9,10 @@
 void cipherCapitols(char* plain, int key)
 {
     key %= 26;
+    //Besser:
+    /*
+    * unsigned int n = sizeof(plain) / sizeof(plain[0])
+    */
     unsigned int n = strlen(plain);
     for (int i = 0; i < n; i++)
     {
