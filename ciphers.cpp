@@ -87,7 +87,8 @@ void cipherLetters(char* plain, int key)
   }
 }
 
-//works
+//works mostly
+//when 'E[69]' is ciphered to an 'a[97]' with the key 22 it is deciphered to a 'K[75]'
 void decipherLetters(char* encrypted, int key)
 {
   key %= 52;
@@ -98,7 +99,7 @@ void decipherLetters(char* encrypted, int key)
     if ((64 < _value && _value < 91) || (96 < _value && _value < 123))
     {
       _value -= key;
-      if ((90 < _value && _value < 97) || (96 < (_value - key) && (_value - key) < 97))
+      if (90 < _value && _value < 97)
          _value -= 6;
       else if (_value < 65)
          _value += 58;
