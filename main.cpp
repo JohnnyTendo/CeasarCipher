@@ -21,11 +21,33 @@ void selectCipher(int &_cipherIdx)
   printf("___________________\r\n");
 }
 
+/*
 void selectKey(int &_key)
 {
   printf("Insert _key: ");
   scanf("%d", &_key);
   printf("___________________\r\n");
+}
+*/
+//EXPERIMENTAL
+void selectKey(int &_key)
+{
+  FILE *keyFile;
+  char* keyFileName = new char[100];
+  printf("Insert KeyFile name: ");
+  scanf("%s", keyFileName);
+  printf("___________________\r\n");
+  keyFile = fopen(keyFileName, "r");
+  if (keyFile == NULL)
+  {
+    printf("Error opening file %s", keyFileName);
+    exit(1);
+  }
+  while(!feof(keyFile)) {
+    _key += fgetc(keyFile);
+  }
+  fclose(keyFile);
+  printf("Key: %d", _key);
 }
 
 void selectDirection(char &_direction)
