@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include "header.h"
 #include <string.h>
-#include <iostream>
-#include <fstream>
-
 
 int main()
 {
