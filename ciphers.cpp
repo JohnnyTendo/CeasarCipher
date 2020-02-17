@@ -81,7 +81,7 @@ void cipherLetters(char* plain, int key)
       if (90 < _value && _value < 97)
         _value += 6;
       if (122 < _value)
-         _value -= 59;
+         _value -= 58;
       plain[i] = _value;
     }
   }
@@ -101,7 +101,7 @@ void decipherLetters(char* encrypted, int key)
       if ((90 < _value && _value < 97) || (96 < (_value - key) && (_value - key) < 97))
          _value -= 6;
       else if (_value < 65)
-         _value += 59;
+         _value += 58;
       encrypted[i] = _value;
     }
   }
