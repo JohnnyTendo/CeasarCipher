@@ -1,8 +1,7 @@
 #include "header.h"
 #include <string.h>
 #include <stdio.h>
-#include <iostream>
-#include <fstream>
+#include <stdlib.h>
 
 //Works
 void cipherCapitols(char* plain, int key)
